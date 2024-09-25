@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { account, database, storage } from '../../Appwrite/Config';
 import { bucketId, collectionId, databaseId } from '../../Appwrite/AppwriteIds';
-
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
     const [email, setEmail] = useState('');
     const [imgsrc, setImgsrc] = useState([]);
     const [data, setData] = useState([]);
+    const history = useHistory();
 
     const getData = async () => {
         try {
@@ -36,7 +37,8 @@ const Home = () => {
         if (email) {
             getData()
         }
-    }, [email]);
+        history.push('/Home');
+    }, [email, history]);
 
     return (
         <div className="min-h-screen flex flex-col items-center text-white">
