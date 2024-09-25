@@ -56,6 +56,7 @@ const CreatePost = () => {
                 const suggestions = data.results.map(result => result.formatted);
                 // Update the state with the suggestions
                 setLocationSuggestions(suggestions);
+                console.log(showSuggestions)
 
             } catch (error) {
                 console.error(error);
