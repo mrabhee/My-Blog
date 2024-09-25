@@ -46,7 +46,7 @@ const MyPosts = () => {
         if (email) {
             getData()
         }
-    }, [email,data]);
+    }, [email, data]);
     return (
         <div className="min-h-screen flex flex-col items-center text-white">
             <div className='w-full'>
@@ -54,10 +54,16 @@ const MyPosts = () => {
             </div>
             {data.filter(doc => doc.email === email).slice().reverse().map((doc, index) => (
                 <main key={index} className="flex flex-col md:flex-col mt-8 mb-8 w-11/12 md:w-2/4 bg-white p-4 rounded-lg shadow-lg text-black">
+
+                    {/* Name */}
                     <div className="flex items-center justify-start md:justify-start mb-4">
                         <h1 className="text-2xl font-bold">{doc.name}</h1>
                     </div>
-                    <div className='flex'>
+
+                    {/* Post */}
+                    <div className='flex flex-col md:flex-row'>
+
+                        {/* Image */}
                         <div className="md:w-2/3">
                             <img
                                 src={imgsrc.find((img) => img.includes(`files/${doc.$id}`))}
@@ -66,7 +72,7 @@ const MyPosts = () => {
                             />
                         </div>
                         <div className="flex flex-col justify-center md:w-1/3 mt-4 md:mt-0 md:ml-4 text-center md:text-left">
-                            <div className="flex flex-col justify-start items-start md:w-3/2 mt-4 md:mt-0 md:ml-4 text-center md:text-left">
+                            <div className="flex flex-col justify-start items-start md:w-3/2 mt-4 md:mt-0 md:ml-4 text-left md:text-left">
                                 <p className="mt-4">{doc.Discription}</p>
                                 <p className="flex mt-4 items-center justify-center gap-1">
                                     <svg className="mt-1 h-6 w-6 text-gray-700" fill="none" viewBox="0 0 26 26" stroke="currentColor">
@@ -81,7 +87,7 @@ const MyPosts = () => {
                             </div>
                             {doc.email === email && (
                                 <button
-                                    className="bg-red-500 hover:bg-red-700 text-white font-bold my-4 py-1 px-2 rounded"
+                                    className="bg-red-500 hover:bg-red-700 text-white font-bold mt-4 py-1 px-2 rounded"
                                     onClick={() => handleDelete(doc.$id)}
                                 >
                                     Delete Post
